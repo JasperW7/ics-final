@@ -9,11 +9,11 @@ import processing.core.*;
  * @author jaspe
  */
 public class Character {
-    private PImage image;
+    protected PImage image;
     private int health;
-    private int x,y;
+    protected int x,y;
     private double atk;
-    private PApplet app;
+    protected PApplet app;
     
     public Character(PApplet p, int x, int y, double atk, int health, String imagePath){
         this.app=p;
