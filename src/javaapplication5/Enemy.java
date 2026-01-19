@@ -21,6 +21,7 @@ public class Enemy extends Character {
     protected PImage facingLeft,facingRight; //directional images
     protected int leftBound, rightBound; //movement bounds if not chasing
     protected boolean movingRight = true; //direction
+    public static int numEnemies = 0;
     /**
      * Constructor for enemy
      * @param app PApplet instance
@@ -44,7 +45,14 @@ public class Enemy extends Character {
         
         facingRight =app.loadImage("images/enemy.png");
         facingLeft = flipImage(facingRight);
+        numEnemies ++;
     }
+    //default overloaded constructor
+    public Enemy(PApplet app, int x, int y) {
+        this(app, x, y, 5, 50, "images/enemy.png", 2, 100, 0, 500);
+        numEnemies++;
+    }
+
     /**
      * 
      * @return enemy x centerpoint

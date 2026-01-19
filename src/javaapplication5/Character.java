@@ -118,7 +118,7 @@ public class Character {
      * @return flipped image
      */
     public PImage flipImage(PImage src) {
-        PImage flipped = app.createImage(src.width, src.height,PGraphics.ARGB);
+        PImage flipped = app.createImage(src.width, src.height, PGraphics.ARGB);
 
         src.loadPixels();
         flipped.loadPixels();
@@ -126,15 +126,23 @@ public class Character {
         int w = src.width;
         int h = src.height;
 
+        int[][] pixelGrid = new int[h][w];
+
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
-                flipped.pixels[y * w + x] =
-                    src.pixels[y * w + (w - 1 - x)];
+                pixelGrid[y][x] = src.pixels[y * w + x];
+            }
+        }
+
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                flipped.pixels[y * w + x] = pixelGrid[y][w - 1 - x];
             }
         }
 
         flipped.updatePixels();
         return flipped;
     }
+
 
 }
